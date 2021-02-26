@@ -3,6 +3,7 @@
 #include <string>		// Для слов
 #include <cstdlib>		// Функции srand() и rand()
 #include <ctime>		// Функция time()
+#include <vector>
 using namespace std;
 
 /*
@@ -70,21 +71,39 @@ string choiceWord()
 
 void game()
 {
-	string answerArray[] = {""};
-	string remainingLetters = {""};
-	string test = choiceWord();
-	int size = test.length();
+	vector<string> answerArray;						// Массив букв 
+	string currentWord = choiceWord();				// Текущее слово
+	int remainingLetters = currentWord.size();		// Размер загаданного слова
+	string inputUser;								// Пользовательский ввод
 
 	// Итоговый массив заполняем "_"
-	/*for (int count = 0; count < size; size++)
+
+	// Заполнение массива элементов нижнее подчеркивание "_"
+	for (int count = 0; count < remainingLetters; count++)
+		answerArray.push_back("_");
+		// Вывод элементов массива
+		for (auto const element : answerArray)
+			cout << element << ' ';
+	cout << "\n";
+
+	while (remainingLetters > 0)
 	{
-		answerArray[count] = {"_"};
-	}*/
-		
+		cin >> inputUser;
 
-	cout << "Хуйня, работай! " << answerArray;
+		// Проверка пользовательского ввода
+		if (inputUser.size() > 1)
+		{
+			cout << "ОШИБКА!\n";
+		}
+		/*else if (inputUser == '0')  <- Эта хуйня не работает
+		{
+			cout << "Игра досрочно завершена!\n";
+			break;
+		}*/
+	}
 
-	cout << "ФУНКЦИЯ GAME: " << test;
+
+	cout << "ФУНКЦИЯ GAME: " << currentWord;
 }
 
 int main()
