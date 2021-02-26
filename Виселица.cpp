@@ -35,10 +35,10 @@ string inputName()
 	return name;
 }
 
-void choiceWord()
+string choiceWord()
 {
 	// Список случайных слов для игры
-	string wordsForGame[] = { "бобер", "крановщик", "кровать", "маска", "растение", "творог", "" };
+	string wordsForGame[] = { "бобер", "крановщик", "кровать", "маска", "растение", "творог", "автомобиль", "автомагистраль" };
 
 	// Размер массива случайных слов
 	int sizeArray = sizeof(wordsForGame) / sizeof(wordsForGame[0]);
@@ -50,24 +50,41 @@ void choiceWord()
 	// Размер выбранного слова
 	int currentSize = currentWord.length();
 
-	cout << "Загаданное слово состоит из " << currentSize << " букв : ";
+	//cout << "Загаданное слово состоит из " << currentSize << " букв : ";
 	// Вывод количества букв слова
 
 	/*
 		Дописать массив, в котором будут записаны буквы...
 	*/
+	//string temp = currentWord;
+	//cout << temp[0] << " - 0 element \n";
+	//cout << temp[1] << " - 1 element \n";
 
-	for (int count = 0; count < currentSize; count++)
+	/*for (int count = 0; count < currentSize; count++)
 	{
 		char byLetter = currentWord[count];
 		cout << "_ ";
-	}
-	cout << "\n";
+	}*/
+	return currentWord;
 }
 
 void game()
 {
-	cout << "";
+	string answerArray[] = {""};
+	string remainingLetters = {""};
+	string test = choiceWord();
+	int size = test.length();
+
+	// Итоговый массив заполняем "_"
+	/*for (int count = 0; count < size; size++)
+	{
+		answerArray[count] = {"_"};
+	}*/
+		
+
+	cout << "Хуйня, работай! " << answerArray;
+
+	cout << "ФУНКЦИЯ GAME: " << test;
 }
 
 int main()
@@ -78,14 +95,9 @@ int main()
 	SetConsoleOutputCP(1251);
 	//
 	srand(static_cast<unsigned int>(time(0)));
-	bool doRunning = true;
 	//string name = inputName();
 	//cout << name << endl;
 	//welcomeMessage();
-	choiceWord();
-	while (doRunning)
-	{
-
-	}
+	game();
 	return 0;
 }
