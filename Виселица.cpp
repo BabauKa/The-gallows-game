@@ -3,7 +3,7 @@
 #include <string>		// Для слов
 #include <cstdlib>		// Функции srand() и rand()
 #include <ctime>		// Функция time()
-#include <vector>
+#include <vector>		// Использование векторных массовов
 using namespace std;
 
 /*
@@ -39,7 +39,7 @@ string inputName()
 string choiceWord()
 {
 	// Список случайных слов для игры
-	string wordsForGame[] = { "бобер", "крановщик", "кровать", "маска", "растение", "творог", "автомобиль", "автомагистраль" };
+	string wordsForGame[] = { "бобер", "крановщик", "кровать", "маска", "растение", "творог", "автомобиль", "автомагистраль", "кратер" };
 
 	// Размер массива случайных слов
 	int sizeArray = sizeof(wordsForGame) / sizeof(wordsForGame[0]);
@@ -48,24 +48,6 @@ string choiceWord()
 	int indexWord = (rand() % sizeArray);
 	string currentWord = wordsForGame[indexWord];
 
-	// Размер выбранного слова
-	int currentSize = currentWord.length();
-
-	//cout << "Загаданное слово состоит из " << currentSize << " букв : ";
-	// Вывод количества букв слова
-
-	/*
-		Дописать массив, в котором будут записаны буквы...
-	*/
-	//string temp = currentWord;
-	//cout << temp[0] << " - 0 element \n";
-	//cout << temp[1] << " - 1 element \n";
-
-	/*for (int count = 0; count < currentSize; count++)
-	{
-		char byLetter = currentWord[count];
-		cout << "_ ";
-	}*/
 	return currentWord;
 }
 
@@ -75,8 +57,7 @@ void game()
 	string currentWord = choiceWord();				// Текущее слово
 	int remainingLetters = currentWord.size();		// Размер загаданного слова
 	string inputUser;								// Пользовательский ввод
-
-	// Итоговый массив заполняем "_"
+	string nolik = "0";								// Шуточка переменная =)
 
 	// Заполнение массива элементов нижнее подчеркивание "_"
 	for (int count = 0; count < remainingLetters; count++)
@@ -95,11 +76,25 @@ void game()
 		{
 			cout << "ОШИБКА!\n";
 		}
-		/*else if (inputUser == '0')  <- Эта хуйня не работает
+		else if (inputUser == nolik)
 		{
 			cout << "Игра досрочно завершена!\n";
 			break;
-		}*/
+		}
+		else
+		{
+			for (int count = 0; count < answerArray.size(); count++)
+			{
+				if (string(1, currentWord[count]) == inputUser)
+				{
+					answerArray[count] = inputUser;
+					for (auto element : answerArray)
+						cout << element << ' ';
+					remainingLetters--;
+					cout << remainingLetters << " <- количество символов оствлось\n";
+				}
+			}
+		}
 	}
 
 
